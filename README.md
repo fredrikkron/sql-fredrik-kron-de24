@@ -1,1 +1,1 @@
-# sql-fredrik-kron-de24
+# SQL course using duckdb
