@@ -1,0 +1,1 @@
+SELECT * FROM main.hemnet_data;
