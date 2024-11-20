@@ -1,0 +1,11 @@
+SELECT
+	experience_level,
+	employment_type,
+	job_title,
+	yearly_salary_in_SEK,
+	monthly_salary_in_SEK,
+	remote_ratio,
+	company_size,
+	salary_level
+FROM
+	main.explore_data;
