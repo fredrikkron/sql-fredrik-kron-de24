@@ -1,5 +1,5 @@
 SELECT DISTINCT employment_type FROM main.cleaned_salaries;
-
+-- a)
 UPDATE
 	main.cleaned_salaries
 SET

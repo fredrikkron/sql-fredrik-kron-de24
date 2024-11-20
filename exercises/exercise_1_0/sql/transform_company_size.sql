@@ -1,5 +1,5 @@
 SELECT DISTINCT company_size FROM main.cleaned_salaries;
-
+-- b)
 UPDATE
 	main.cleaned_salaries
 SET
