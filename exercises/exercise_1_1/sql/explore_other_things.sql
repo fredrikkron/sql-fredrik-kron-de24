@@ -13,7 +13,7 @@ FROM
 -- 10 bäst betalda individerna inom varje specifik yrkesroll 
 SELECT
 	job_title,
-	MAX(monthly_salary_in_SEK)
+	MAX(monthly_salary_in_SEK) AS highest_paid
 FROM
 	main.explore_data
 WHERE
@@ -21,7 +21,7 @@ WHERE
 GROUP BY
 	job_title
 ORDER BY
-	MAX(monthly_salary_in_SEK) DESC
+	highest_paid DESC
 	LIMIT 10;
 	
 -- Folk som jobbar i Sverige
@@ -36,16 +36,16 @@ WHERE employee_residence = 'SE';
 
 SELECT
 	job_title,
-	AVG(monthly_salary_in_SEK)
+	ROUND(AVG(monthly_salary_in_SEK)) AS mean_salary
 FROM
 	main.explore_data
 WHERE
 	company_location = 'US'
-	AND salary_level = 'low'
+	AND salary_level = 'Low'
 GROUP BY
 	job_title
 ORDER BY
-	AVG(monthly_salary_in_SEK);
+	mean_salary DESC;
 
 
 

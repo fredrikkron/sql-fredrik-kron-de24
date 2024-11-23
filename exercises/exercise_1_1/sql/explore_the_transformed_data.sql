@@ -32,58 +32,58 @@ SELECT
 FROM
 	main.explore_data
 WHERE
-	salary_level = 'low'; -- 382
+	salary_level = 'Low'; -- 382
 	
 SELECT
 	COUNT(*)
 FROM
 	main.explore_data
 WHERE
-	salary_level = 'medium'; -- 1668
+	salary_level = 'Medium'; -- 1668
 	
 SELECT
 	COUNT(*)
 FROM
 	main.explore_data
 WHERE
-	salary_level = 'high'; -- 5606
+	salary_level = 'High'; -- 5606
 	
 SELECT
 	COUNT(*)
 FROM
 	main.explore_data
 WHERE
-	salary_level = 'insanely_high'; -- 8878
+	salary_level = 'Insanely_high'; -- 8878
 	
 -- d)
 
 SELECT
-	MEDIAN(monthly_salary_in_SEK),
-	MEAN(monthly_salary_in_SEK)
+	MEDIAN(monthly_salary_in_SEK) AS median_monthly_salary,
+	ROUND(MEAN(monthly_salary_in_SEK)) AS mean_monthly_salary
 FROM
 	main.explore_data
 WHERE
 	experience_level = 'SE';
 
 SELECT
-	MEDIAN(monthly_salary_in_SEK),
-	MEAN(monthly_salary_in_SEK)
+	MEDIAN(monthly_salary_in_SEK) AS median_monthly_salary,
+	ROUND(MEAN(monthly_salary_in_SEK)) AS mean_monthly_salary
 FROM
 	main.explore_data
 WHERE
 	experience_level = 'EN';
 
 SELECT
-	MEDIAN(monthly_salary_in_SEK),
-	MEAN(monthly_salary_in_SEK)
+	MEDIAN(monthly_salary_in_SEK) AS median_monthly_salary,
+	ROUND(MEAN(monthly_salary_in_SEK)) AS mean_monthly_salary
 FROM
 	main.explore_data
 WHERE
 	experience_level = 'MI';
 
 SELECT
-	MEDIAN(monthly_salary_in_SEK),
-	MEAN(monthly_salary_in_SEK)
+	MEDIAN(monthly_salary_in_SEK) AS median_monthly_salary,
+	ROUND(MEAN(monthly_salary_in_SEK)) AS mean_monthly_salary
 FROM
 	main.explore_data
 WHERE
@@ -99,7 +99,7 @@ FROM
 GROUP BY
 	job_title
 ORDER BY
-	median_salary DESC
+	median_salary
 LIMIT 5;
 
 -- f)
@@ -107,18 +107,17 @@ LIMIT 5;
 SELECT
 	remote_ratio,
 	COUNT(*) AS job_counter,
-	COUNT(*) * 100 / (
+	ROUND(COUNT(*) * 100 / (
 	SELECT
 		COUNT(*)
 	FROM
-		main.explore_data) AS percentage
+		main.explore_data),
+	2) AS percentage
 FROM
 	main.explore_data
 WHERE
 	remote_ratio IN (0, 50, 100)
 GROUP BY
-	remote_ratio
-ORDER BY
 	remote_ratio;
 
 -- g)

@@ -29,10 +29,10 @@ UPDATE
 	main.explore_data
 SET
 	salary_level = CASE
-		WHEN monthly_salary_in_SEK < 40000 THEN 'low'
-		WHEN monthly_salary_in_SEK BETWEEN 40000 AND 70000 THEN 'medium'
-		WHEN monthly_salary_in_SEK BETWEEN 70000 AND 125000 THEN 'high'
-		WHEN monthly_salary_in_SEK > 125000 THEN 'insanely_high'
+		WHEN monthly_salary_in_SEK < 40000 THEN 'Low'
+		WHEN monthly_salary_in_SEK BETWEEN 40000 AND 70000 THEN 'Hedium'
+		WHEN monthly_salary_in_SEK BETWEEN 70000 AND 125000 THEN 'High'
+		WHEN monthly_salary_in_SEK > 125000 THEN 'Insanely_high'
 	END;
 	
 UPDATE main.explore_data SET yearly_salary_in_SEK = (11 * salary_in_usd);
