@@ -11,3 +11,15 @@ FROM
 	main.food);
 
 SELECT * FROM main.cleaned_food;
+
+
+UPDATE
+	cleaned_food
+SET
+	week = week[6:];
+
+UPDATE
+	cleaned_food
+SET
+	week = SUBSTRING(week, 6);
+
