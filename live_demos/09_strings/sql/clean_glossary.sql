@@ -8,8 +8,22 @@ SELECT
 FROM
 	staging.sql_glossary);
 
+SELECT * FROM staging.sql_glossary;
+
 SELECT * FROM refined.sql_glossary;
 
 
+UPDATE
+	refined.sql_glossary
+SET  
+	sql_word = UPPER(TRIM(sql_word)),
+	description = REGEXP_REPLACE(TRIM(description),
+	' +',
+	' ',
+	'g'),
+	example = LOWER(REGEXP_REPLACE(TRIM(example),
+	' +',
+	' ',
+	'g'));
 
 
