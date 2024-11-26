@@ -11,10 +11,10 @@ FROM
 -- getitem []
 SELECT
 	sql_word,
-	sql_word[0],
-	sql_word[1],
-	sql_word[-1]
-FROM
+	sql_word[0] AS blank_space,
+	sql_word[1] AS first_character,
+	sql_word[-1] AS last_character
+FROM 
 	staging.sql_glossary;
 
 -- concatenation
@@ -28,22 +28,22 @@ FROM
 -- remove spaces
 SELECT
 	TRIM(sql_word) AS trimmed_word,
-	trimmed_word[1],
-	trimmed_word[-1]
+	trimmed_word[1] AS first_character,
+	trimmed_word[-1] AS last_character
 FROM
 	staging.sql_glossary;
 
 -- Uppercase
 SELECT
 	UPPER(TRIM(sql_word)) AS trimmed_word,
-	trimmed_word[1],
-	trimmed_word[-1]
+	trimmed_word[1] AS first_character,
+	trimmed_word[-1] AS last_character
 FROM
 	staging.sql_glossary;
 
 --
 SELECT
-	replace(TRIM(description), '  ', ' ') 
+	replace(TRIM(description), '  ', ' ')
 FROM
 	staging.sql_glossary;
 
