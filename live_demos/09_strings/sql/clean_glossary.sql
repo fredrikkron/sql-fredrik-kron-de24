@@ -26,4 +26,27 @@ SET
 	' ',
 	'g'));
 
+UPDATE
+	refined.sql_glossary
+SET
+	example = 
+(REGEXP_REPLACE(TRIM(example),
+	' +;',
+	';',
+	'g'));
 
+SELECT
+	(REGEXP_REPLACE(TRIM(example),
+	' +,',
+	',',
+	'g'))
+FROM
+	staging.sql_glossary;
+
+SELECT
+	LOWER(REGEXP_REPLACE(TRIM(example),
+	' +;',
+	';',
+	'g')) AS example
+FROM
+	staging.sql_glossary;
