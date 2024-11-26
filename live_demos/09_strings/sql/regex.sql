@@ -1,10 +1,10 @@
 -- trim away extra spaces
 SELECT
-	regexp_replace(TRIM(description),
+	REGEXP_REPLACE(TRIM(description),
 	' +',
 	' ',
 	'g'),
-	LOWER(regexp_replace(TRIM(example),
+	LOWER(REGEXP_REPLACE(TRIM(example),
 	' +',
 	' ',
 	'g'))
@@ -25,4 +25,4 @@ SELECT
 FROM
 	staging.sql_glossary
 WHERE
-	regexp_matches(LOWER(description), 'select\b');
+	REGEXP_MATCHES(LOWER(description), 'select\b');

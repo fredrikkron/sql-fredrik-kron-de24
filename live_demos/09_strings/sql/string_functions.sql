@@ -18,7 +18,9 @@ FROM
 	staging.sql_glossary;
 
 -- concatenation
-SELECT 'fun' || ' joke'
+SELECT 'fun' || ' joke' AS concatenation
+
+SELECT UPPER(SUBSTR('hej',1,1)) || 'ej' || ' ' || UPPER('de24') AS greeting
 
 SELECT
 	'SQL command: ' || sql_word
@@ -43,7 +45,8 @@ FROM
 
 --
 SELECT
-	replace(TRIM(description), '  ', ' ')
+	REPLACE(TRIM(description), '  ', ' ') AS trim_to_one_space, -- doesn't work (regexp)
+	REPLACE(TRIM(description), ' ', '') AS trim_to_no_space
 FROM
 	staging.sql_glossary;
 
