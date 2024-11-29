@@ -1,9 +1,6 @@
 SELECT * FROM main.cleaned_salaries;
 
--- c)
-ALTER TABLE main.cleaned_salaries ADD COLUMN yearly_salary_in_SEK INTEGER;
--- d)
-ALTER TABLE main.cleaned_salaries ADD COLUMN monthly_salary_in_SEK INTEGER;
+summarize main.cleaned_salaries;
 
 -- f)
 SELECT
@@ -46,11 +43,12 @@ FROM
 WHERE
 	company_size = 'Large'
 	AND employment_type = 'Full time'
-	AND yearly_salary_in_SEK < 1000000
+	AND yearly_salary_in_SEK < 1300000
 	AND experience_level = 'EN'
 	AND job_title = 'Data Analyst'
 ORDER BY
 	yearly_salary_in_SEK DESC;
+
 
 
 
