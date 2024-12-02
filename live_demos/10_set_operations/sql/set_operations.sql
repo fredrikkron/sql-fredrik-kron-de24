@@ -1,19 +1,24 @@
--- UNION combine sets, all unique elements
+-- UNION - combine sets, all unique elements
 SELECT * FROM synthetic.sales_jan
 UNION
 SELECT * FROM synthetic.sales_feb;
 
--- removed duplicate
+-- removed monitor because now the 2 rows with monitor are duplicate
+SELECT product_name, amount FROM synthetic.sales_jan
+UNION
+SELECT product_name, amount FROM synthetic.sales_feb;
+
+-- another way in this example to remove duplicate
 SELECT * EXCLUDE(sale_date) FROM synthetic.sales_jan
 UNION
 SELECT * EXCLUDE(sale_date) FROM synthetic.sales_feb;
 
--- keeps all, including duplicates
+-- UNION ALL - keeps all, including duplicates
 SELECT * EXCLUDE(sale_date) FROM synthetic.sales_jan
 UNION ALL
 SELECT * EXCLUDE(sale_date) FROM synthetic.sales_feb;
 
--- only the ones that are common(equal)
+-- INTERSECT - only the ones that are common(equal) --> empty set because dates are different in monitor
 SELECT * FROM synthetic.sales_jan
 INTERSECT
 SELECT * FROM synthetic.sales_feb;
