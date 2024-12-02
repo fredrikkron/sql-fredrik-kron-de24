@@ -38,7 +38,15 @@ WHERE
 	c.first_name LIKE 'D%';
 
 
-
+SELECT
+	store_id,
+	COUNT(*) AS number_customers
+FROM
+	main.customer c
+GROUP BY
+	store_id
+ORDER BY
+	store_id ASC;
 
 
 

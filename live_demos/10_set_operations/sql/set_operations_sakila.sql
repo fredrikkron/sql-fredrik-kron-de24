@@ -68,5 +68,10 @@ FROM
 WHERE
 	a.first_name LIKE 'J%'
 	AND a.last_name LIKE 'D%';
-	
+
+
+
+
+
+
 
