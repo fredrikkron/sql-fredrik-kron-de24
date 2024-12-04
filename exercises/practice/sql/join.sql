@@ -6,7 +6,7 @@ SELECT
 FROM
 	main.sales s
 LEFT JOIN main.products p ON
-	p.product_id = s.product_id; 
+	s.product_id = p.product_id; 
 
 SELECT
 	product_name,

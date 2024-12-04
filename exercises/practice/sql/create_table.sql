@@ -19,6 +19,9 @@ CREATE TABLE
 ALTER TABLE main.sales
 ALTER COLUMN sale_date SET DATA TYPE VARCHAR;
 
+ALTER TABLE main.products ALTER COLUMN price SET DATA TYPE VARCHAR;
+ALTER TABLE main.products ADD COLUMN price DECIMAL;
+
 DESC;
 
 SELECT * FROM main.products p ;
