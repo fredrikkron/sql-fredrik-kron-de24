@@ -1,5 +1,6 @@
 DESC;
--- b + c)
+-- b) Select all data on all tables.
+-- c) Find out how many rows there are in each table. (added COUNT())
 SELECT COUNT(*) FROM main.actor a; -- 200
 SELECT COUNT(*) FROM main.address a1; -- 603
 SELECT COUNT(*) FROM main.category c;  -- 16
@@ -22,7 +23,7 @@ SELECT COUNT(*) FROM main.staff s; -- 2
 SELECT COUNT(*) FROM main.staff_list sl; -- 2
 SELECT COUNT(*) FROM main.store s; -- 2
 
--- d)
+-- d) Calculate descriptive statistics on film length.
 SELECT * FROM main.film f ;
 SELECT
 	film_id,
@@ -44,7 +45,7 @@ FROM
 WHERE
 	length > 120; -- 457 movies that are longer than 2 hours
 
--- e)
+-- e)  What are the peak rental times?
 DESC rental;
 SELECT * from main.rental r ;
 SELECT
@@ -58,7 +59,7 @@ GROUP BY
 ORDER BY
 	amount DESC;
 
--- f)
+-- f) What is the distribution of film ratings?
 DESC film;
 SELECT
 	rating,
@@ -70,9 +71,12 @@ GROUP BY
 ORDER BY
 	amount DESC;
 
--- g)
+-- g) Who are the top 10 customers by number of rentals?
 DESC rental;
 DESC customer;
+SELECT * FROM main.rental r WHERE customer_id = 130;
+
+SELECT * FROM main.customer c;
 
 SELECT
 	c.first_name,
@@ -89,16 +93,54 @@ ORDER BY
 	amount_of_rented_movies DESC
 LIMIT 10;
 
+-- h) Retrieve a list of all customers and what films they have rented.
+SELECT * FROM main.customer c;
+SELECT * FROM main.rental r;
+SELECT * FROM main.film f;
+SELECT * FROM main.inventory i;
+
+SELECT
+	c.last_name,
+	c.first_name,
+	f.title
+FROM
+	main.customer c
+INNER JOIN main.rental r ON
+	r.customer_id = c.customer_id
+INNER JOIN main.inventory i ON
+	r.inventory_id = i.inventory_id
+INNER JOIN main.film f ON
+	i.film_id = f.film_id
+ORDER BY
+	c.last_name,
+	c.first_name,
+	f.title;
 
 
-SELECT * FROM main.rental r WHERE customer_id = 130;
-
-SELECT * FROM main.customer c; 
-
-
-
-
-
+-- Add a WHERE clause to filter on a string, put it after the joins
+-- In this case movies rented by person with last_name that start with the letter A - 525
+SELECT
+	c.last_name,
+	c.first_name,
+	f.title
+FROM
+	main.customer c
+INNER JOIN main.rental r ON
+	r.customer_id = c.customer_id
+INNER JOIN main.inventory i ON
+	r.inventory_id = i.inventory_id
+INNER JOIN main.film f ON
+	i.film_id = f.film_id
+WHERE
+	c.last_name LIKE 'A%'
+GROUP BY
+	c.last_name,
+	c.first_name,
+	f.title
+ORDER BY
+	c.last_name,
+	c.first_name,
+	f.title;
 
 
 
