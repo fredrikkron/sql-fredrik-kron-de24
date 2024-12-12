@@ -22,3 +22,26 @@ UPDATE main.sales SET total_amount = 1200 WHERE sale_id = 4;
 INSERT INTO main.sales VALUES (7,7,'2024-02-24',8,1850);
 
 DELETE FROM main.sales s WHERE sale_id = 7;
+
+SELECT * FROM main.products;
+
+ALTER TABLE main.products RENAME discount_price TO price_after_discount;
+
+UPDATE main.products
+SET price_after_discount = CAST(price AS FLOAT) / 100 * 70
+WHERE product_id IN (3);
+
+UPDATE main.products SET discount = 30 WHERE product_id = 3;
+
+DESC;
+	
+
+
+
+
+
+
+
+
+
+
