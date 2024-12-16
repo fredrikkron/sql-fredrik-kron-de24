@@ -10,7 +10,7 @@ FROM
 UNION
 SELECT first_name, last_name FROM main.customer c WHERE last_name LIKE 'G%' ORDER BY last_name; -- if count, 55
 
--- b) How many customers and actors starts have the the letters 'ann' in there first names?
+-- b) How many customers and actors starts with the letters 'ann' in there first names?
 
 SELECT
 	COUNT(*) AS name_start_with_ANN
