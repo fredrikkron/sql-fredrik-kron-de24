@@ -25,3 +25,8 @@ WHERE REGEXP_MATCHES(LOWER(example), '\\btable\\b');
 SELECT 
     REPLACE(column_name, 'specificword', UPPER('specificword')) AS transformed_column
 FROM table_name;
+
+
+SELECT sql_word[:2] AS sliced_word FROM refined.sql_glossary sg;
+SELECT sql_word[2:5] AS sliced_word FROM refined.sql_glossary sg;
+SELECT sql_word[3:] AS sliced_word FROM refined.sql_glossary sg;
