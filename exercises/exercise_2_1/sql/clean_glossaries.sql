@@ -30,3 +30,5 @@ FROM table_name;
 SELECT sql_word[:2] AS sliced_word FROM refined.sql_glossary sg;
 SELECT sql_word[2:5] AS sliced_word FROM refined.sql_glossary sg;
 SELECT sql_word[3:] AS sliced_word FROM refined.sql_glossary sg;
+
+SELECT LENGTH(sql_word) FROM refined.sql_glossary sg ;
